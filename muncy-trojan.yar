@@ -2,7 +2,7 @@ import "pe"
 
 rule Muncy_Trojan_201902 {
 meta:
-	description = "Yara rule for Trojan Trojan:Win32/Azden.A!cl - February version"
+	description = "Yara rule for Muncy Trojan - February version"
 	author = "SI-LAB - https://seguranca-informatica.pt"
 	last_updated = "2019-02-12"
 	tlp = "white"
