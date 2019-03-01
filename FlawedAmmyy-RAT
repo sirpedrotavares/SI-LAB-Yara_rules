@@ -1,0 +1,16 @@
+rule FlawedAmmyy_201903 {
+meta:
+  description = "Yara rule for FlawedAmmy RAT - March version"
+  author = "SI-LAB - https://seguranca-informatica.pt"
+  last_updated = "2019-03-01"
+  tlp = "white"
+  category = "informational"
+strings:
+  $a1 = "AMMY" 
+  $a2 = "wsus.exe"
+  $a3 = "AlCOHOL LTD"
+  $a4 = "foundation"
+  $a5 = "DORKING1"
+condition:
+  1 of ($a*)
+ }
