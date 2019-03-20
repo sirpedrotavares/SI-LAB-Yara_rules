@@ -1,0 +1,18 @@
+rule LockerGoga {
+   meta:
+      description = "LockerGoga Ransomware - March Version"
+      author = "SI-LAB - https://seguranca-informatica.pt"
+      last_updated = "2019-03-01"
+      tlp = "white"
+      category = "informational"
+
+   strings:
+      $ransom_1 = "You should be thankful that the flaw was exploited by serious people and not some rookies." wide ascii nocase
+      $ransom_2 = "Your files are encrypted with the strongest military algorithms RSA4096 and AES-256" wide ascii nocase
+      $str = "(readme-now" wide ascii nocase
+      $mlcrosoft = "Mlcrosoft" wide ascii nocase
+      $cert = {  1D A2 48 30 6F 9B 26 18 D0 82 E0 96 7D 33 D3 6A } //  Sectigo RSA Code Signing CA
+  
+   condition:
+      3 of them
+}
