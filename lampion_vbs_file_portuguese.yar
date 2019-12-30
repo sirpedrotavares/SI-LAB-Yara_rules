@@ -1,6 +1,6 @@
 rule Lampion_VBS_File_Portugal {
   meta:
-  description = "Yara rule for Lampion Portugal - Dezember version"
+  description = "Yara rule for Lampion Portugal - December version"
   author = "SI-LAB - https://seguranca-informatica.pt"
   last_updated = "2019-12-28"
   tlp = "white"
