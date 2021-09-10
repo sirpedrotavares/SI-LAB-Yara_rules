@@ -1,0 +1,35 @@
+import "pe"
+rule maxtrilha_banking_trojan_loader_2021 {
+meta:
+    description = "Yara rule for maxtrilha trojan banker (loader) - September 2021 version"
+    author = "SI-LAB - https://seguranca-informatica.pt"
+    last_updated = "2021-09-10"
+    tlp = "white"
+    category = "informational"
+    
+    strings:
+    $s_a = {68 00 74 00 74 00 70 00 73 00 3A 00 2F 00 2F 00 77 00 77 00 77 00 2E 00 69 00 6E 00 76 00 65 00 72 00 74 00 65 00 78 00 74 00 6F 00 2E 00 63 00 6F 00 6D 00 2F 00 6C 00 6F 00 63 00 61 00 6C 00}
+	$s_b = {73 00 61 00 67 00 65 00 70 00 72 00 6F 00 74 00 6F 00 74 00 79 00 70 00 65 00 67 00 6F 00 2E 00 70 00 74 00 2F 00 73 00 65 00 70 00 74 00 2F 00 63 00 75 00 6C 00 74 00 2E 00 6D 00 70 00 33 00}
+    condition:
+        filesize < 20000KB
+        and all of ($s_*)
+}
+
+
+
+rule maxtrilha_banking_trojan_2nd_stage_2021 {
+meta:
+    description = "Yara rule for maxtrilha trojan banker (2nd stage) - September 2021 version"
+    author = "SI-LAB - https://seguranca-informatica.pt"
+    last_updated = "2021-09-10"
+    tlp = "white"
+    category = "informational"
+    
+    strings:
+    $s_a = {62 00 72 00 69 00 6C 00 70 00 72 00 6F 00 72 00 6F 00 63 00 6B 00 32 00 30 00 31 00 38 00 2E 00 77 00 65 00 62 00 63 00 69 00 6E 00 64 00 61 00 72 00 69 00 6F 00 2E 00 63 00 6F 00 6D 00 2F 00}
+	$s_b = {68 00 74 00 74 00 70 00 73 00 3A 00 2F 00 2F 00 77 00 77 00 77 00 2E 00 69 00 6E 00 76 00 65 00 72 00 74 00 65 00 78 00 74 00 6F 00 2E 00 63 00 6F 00 6D 00 2F 00 6C 00 6F 00 63 00 61 00 6C 00}
+	$s_c = {00 34 00 2E 00 32 00 32 00 38 00 2E 00 31 00 32 00 33 00 2E 00 31 00 36 00 31 00 2F 00 64 00 61 00}
+    condition:
+        filesize < 20000KB
+        and all of ($s_*)
+}
