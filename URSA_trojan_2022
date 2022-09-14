@@ -1,0 +1,81 @@
+import "pe"
+import "hash"
+
+rule URSA_trojan_VBS_loader_2022 {
+meta:
+    description = "Yara rule for URSA trojan VBS (loader) - September 2022 version"
+    author = "SI-LAB - https://seguranca-informatica.pt"
+    last_updated = "2022-09-14"
+    tlp = "white"
+    category = "informational"
+    
+    strings:
+    $s_a = {6d 34 67 78 30 31}
+    $s_b = {6d 73 67 42 6f 78}
+    condition:
+        filesize < 10KB
+        and all of ($s_*)
+}
+rule URSA_VBS_AUTOIT_LOADER_2022 {
+meta:
+    description = "Yara rule for URSA trojan VBS loader AuToIT - September 2022 version"
+	author = "SI-LAB - https://seguranca-informatica.pt"
+    last_updated = "2022-09-14"
+    tlp = "white"
+    category = "informational"
+    
+    strings:
+    $s_a = "Nova"
+    $s_b = "_39"
+	$s_c = "FCYFLFCFMF"
+	$s_d = "FJCXCUCHCOCHEUFECWCHCOCHEUFECXCHCO"
+    condition:
+        filesize < 40KB
+        and all of ($s_*)
+}
+rule URSA_AUTOIT_LOADER_2022 {
+meta:
+    description = "Yara rule for URSA trojan VBS loader AuToIT - September 2022 version"
+	author = "SI-LAB - https://seguranca-informatica.pt"
+    last_updated = "2022-09-14"
+    tlp = "white"
+    category = "informational"
+    
+    strings:
+    $s_a = {41 75 74 6F 49 74}
+    condition:
+        filesize < 900KB and
+		hash.md5(0, filesize) == "c56b5f0201a3b3de53e561fe76912bfd" 
+        and all of ($s_*)
+}
+rule URSA_DLL_ENCRYPED_2022 {
+meta:
+    description = "Yara rule for URSA trojan VBS loader AuToIT - September 2022 version"
+	author = "SI-LAB - https://seguranca-informatica.pt"
+    last_updated = "2022-09-14"
+    tlp = "white"
+    category = "informational"
+    
+    strings:
+    $s_a = {15 62 70 67 18 1B 1A 1B 1C 21 1E 24}
+	$s_b = {32 33 34 35 36 37 38 2F 30 31 32 25 26 27 28 37 38 2F 30 31 32 33 34 35 36 37 38 2F 30 31 32 1B 1C 35 36}
+    condition:
+        filesize < 5000KB 
+        and all of ($s_*)
+}
+
+rule URSA_DLL_ENCRYPED_2022 {
+meta:
+    description = "Yara rule for URSA trojan VBS loader AuToIT - September 2022 version"
+	author = "SI-LAB - https://seguranca-informatica.pt"
+    last_updated = "2022-09-14"
+    tlp = "white"
+    category = "informational"
+    
+    strings:
+    $s_a = {15 62 70 67 18 1B 1A 1B 1C 21 1E 24}
+	$s_b = {32 33 34 35 36 37 38 2F 30 31 32 25 26 27 28 37 38 2F 30 31 32 33 34 35 36 37 38 2F 30 31 32 1B 1C 35 36}
+    condition:
+        filesize < 5000KB 
+        and all of ($s_*)
+}
